@@ -1,30 +1,20 @@
-/* 
-Write a function called `findUserByUsername` which accepts an array of objects, each with a key of username, and a string. The function should return the first object with the key of username that matches the string passed to the function. If the object is not found, return undefined. 
+// Function to find a user by username in an array of objects
+// Using find method
+function findUserByUsername(usersArray, username) {
+  return usersArray.find(user => user.username === username);
+}
 
-const users = [
-  {username: 'mlewis'},
-  {username: 'akagen'},
-  {username: 'msmith'}
-];
+// Function to remove a user by username
+// Using the findIndex method to get the index of the object with the specified username
+function removeUser(usersArray, username) {
+  const index = usersArray.findIndex(user => user.username === username);
 
-findUserByUsername(users, 'mlewis') // {username: 'mlewis'}
-findUserByUsername(users, 'taco') // undefined
-*/
+  // Checking if the user with the specified username is found
+  if (index !== -1) {
+    // Using splice to remove the object from the array at the found index and returning the removed object
+    return usersArray.splice(index, 1)[0];
+  }
 
-
-function findUserByUsername(usersArray, username) {}
-
-/*
-Write a function called `removeUser` which accepts an array of objects, each with a key of username, and a string. The function should remove the object from the array. If the object is not found, return undefined. 
-
-const users = [
-  {username: 'mlewis'},
-  {username: 'akagen'},
-  {username: 'msmith'}
-];
-
-removeUser(users, 'akagen') // {username: 'akagen'}
-removeUser(users, 'akagen') // undefined
-*/
-
-function removeUser(usersArray, username) {}
+  // Returning undefined if the user with the specified username is not found
+  return undefined;
+}
